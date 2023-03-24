@@ -2,7 +2,7 @@
 Animeweb is my side project which I' m doing in my free time. I enjoy watching anime and reading manga in my spare time,
 so the idea for manga site came naturally. The project is modeled after [myanimelist](https://myanimelist.net/) and the polish movie site [Filmweb](https://www.filmweb.pl/). 
 By creating this project I would like to learn new tools and consolidate the knowledge I have. In the moment I started backend in the near future I will be working on 
-front-end side. If you happened to find a bug or want to help me you can find me at project.maciej.matusz@gmail.com .
+front-end side. If you happened to find a bug or want to help me you write in issues tab what's going on.
 
 ## Tech Stack
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=plastic&logo=Java&logoColor=white)
