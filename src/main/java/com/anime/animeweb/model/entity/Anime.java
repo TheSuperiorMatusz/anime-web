@@ -1,14 +1,13 @@
 package com.anime.animeweb.model.entity;
 
 import com.anime.animeweb.model.entity.key.AnimeKey;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Entity
@@ -27,4 +26,8 @@ public class Anime {
     private Integer year;
 
     private String description;
+
+    @OneToMany
+    @JoinColumn(name = "title")
+    private List<Review> reviewList;
 }
