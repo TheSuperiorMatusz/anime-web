@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-
 public class User {
     @Id @Column(length = 100)
     private String login;

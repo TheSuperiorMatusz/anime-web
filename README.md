@@ -13,3 +13,9 @@ front-end side. If you happened to find a bug or want to help me you write in is
 ### Required software
 - Java 17
 - PostgreSQL ***version*** 15
+
+
+To run PostgreSQL database type:
+```bash
+  docker run -dp 5432:5432 --name anime_web -e POSTGRES_PASSWORD=123 -d postgres
+```
