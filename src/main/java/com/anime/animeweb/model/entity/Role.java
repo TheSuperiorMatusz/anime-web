@@ -11,14 +11,16 @@ import java.util.List;
 @Table(name = "role")
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Enumerated(EnumType.STRING)
     private UserRole roleName;
 
-    public Role(UserRole roleName){
+    public Role(UserRole roleName) {
         this.roleName = roleName;
     }
+
     @OneToMany(mappedBy = "role")
     private List<User> users;
 

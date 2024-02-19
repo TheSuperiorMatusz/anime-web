@@ -1,8 +1,6 @@
 package com.anime.animeweb.model.entity;
 
-import com.anime.animeweb.model.entity.key.AnimeKey;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,20 +12,26 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
 @Table(name = "anime")
-@IdClass(AnimeKey.class)
 public class Anime {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String title;
 
-    @Id
+
     private Integer year;
 
     private String description;
 
-    @OneToMany
-    @JoinColumn(name = "title")
+    @ManyToOne
+    @JoinColumn(name = "studio_id")
+    private Studio studio;
+
+
+    @OneToMany(mappedBy = "anime")
     private List<Review> reviewList;
+
+
 }
