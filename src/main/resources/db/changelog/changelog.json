@@ -42,11 +42,18 @@
               "columns": [
                 {
                   "column": {
-                    "name": "login",
-                    "type": "VARCHAR(100)",
+                    "name": "id",
+                    "type": "INTEGER",
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true
                     }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "login",
+                    "type": "VARCHAR(100)",
                   }
                 },
                 {
@@ -221,8 +228,8 @@
                 },
                 {
                   "column": {
-                    "name": "login_user",
-                    "type": "VARCHAR(100)",
+                    "name": "user_id",
+                    "type": "INTEGER",
                     "constraints": {
                       "nullable": false
                     }
@@ -264,8 +271,11 @@
                 },
                 {
                   "column": {
-                    "name": "user_Login",
-                    "type": "VARCHAR(100)"
+                    "name": "user_id",
+                    "type": "INTEGER",
+                    "constraints": {
+                      "nullable": false
+                    }
                   }
                 },
                 {
@@ -322,9 +332,9 @@
           {
             "addForeignKeyConstraint": {
               "baseTableName": "review",
-              "baseColumnNames": "login_user",
+              "baseColumnNames": "user_id",
               "referencedTableName": "user",
-              "referencedColumnNames": "login",
+              "referencedColumnNames": "id",
               "constraintName": "fk_review_user"
             }
           }
@@ -355,9 +365,9 @@
           {
             "addForeignKeyConstraint": {
               "baseTableName": "comment",
-              "baseColumnNames": "user_Login,",
+              "baseColumnNames": "user_id",
               "referencedTableName": "user",
-              "referencedColumnNames": "login",
+              "referencedColumnNames": "id",
               "constraintName": "fk_comment_user"
             }
           }
