@@ -1,7 +1,6 @@
 package com.anime.animeweb.model.entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
 @Table(name = "review")
 public class Review {
 
@@ -23,9 +21,9 @@ public class Review {
     private String contest;
 
     @ManyToOne
-    @JoinColumn(name = "title_anime", referencedColumnName = "title_anime")
+    @JoinColumn(name = "anime_id")
     private Anime anime;
 
-    @OneToMany(mappedBy="review")
+    @OneToMany(mappedBy = "review")
     private List<Comment> comments;
 }

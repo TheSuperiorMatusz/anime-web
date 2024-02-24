@@ -2,7 +2,7 @@
   "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "1",
+        "id": "1. Role table",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -13,6 +13,7 @@
                   "column": {
                     "name": "id",
                     "type": "INTEGER",
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true
                     }
@@ -32,7 +33,7 @@
     },
     {
       "changeSet": {
-        "id": "2",
+        "id": "2. User Table",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -96,50 +97,7 @@
     },
     {
       "changeSet": {
-        "id": "3",
-        "author": "Maciej Matusz",
-        "changes": [
-          {
-            "createTable": {
-              "tableName": "anime",
-              "columns": [
-                {
-                  "column": {
-                    "name": "title",
-                    "type": "VARCHAR(50)",
-                    "constraints": {
-                      "primaryKey": true,
-                      "nullable": false,
-                      "primaryKeyName": "pk_anime"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "year",
-                    "type": "INTEGER",
-                    "constraints": {
-                      "primaryKey": true,
-                      "nullable": false,
-                      "primaryKeyName": "pk_anime"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "description",
-                    "type": "VARCHAR(255)"
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "changeSet": {
-        "id": "4",
+        "id": "3. Studio Table",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -148,13 +106,18 @@
               "columns": [
                 {
                   "column": {
-                    "name": "name",
-                    "type": "VARCHAR(255)",
+                    "name": "id",
+                    "type": "INTEGER",
+                    "autoIncrement": true,
                     "constraints": {
-                      "primaryKey": true,
-                      "nullable": false,
-                      "primaryKeyName": "pk_studio"
+                      "primaryKey": true
                     }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "VARCHAR(255)"
                   }
                 },
                 {
@@ -166,12 +129,7 @@
                 {
                   "column": {
                     "name": "year",
-                    "type": "INTEGER",
-                    "constraints": {
-                      "primaryKey": true,
-                      "nullable": false,
-                      "primaryKeyName": "pk_studio"
-                    }
+                    "type": "INTEGER"
                   }
                 }
               ]
@@ -182,54 +140,49 @@
     },
     {
       "changeSet": {
-        "id": "5",
+        "id": "4. Anime Table",
         "author": "Maciej Matusz",
         "changes": [
           {
             "createTable": {
-              "tableName": "created",
+              "tableName": "anime",
               "columns": [
                 {
                   "column": {
-                    "name": "name_studio",
-                    "type": "VARCHAR(255)",
+                    "name": "id",
+                    "type": "INTEGER",
+                    "autoIncrement": true,
                     "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_created"
+                      "primaryKey": true
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "year_studio",
+                    "name": "title",
+                    "type": "VARCHAR(50)"
+
+                  }
+                },
+                {
+                  "column": {
+                    "name": "year",
+                    "type": "INTEGER"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "description",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "studio_id",
                     "type": "INTEGER",
                     "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_created"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "title_anime",
-                    "type": "VARCHAR(50)",
-                    "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_created"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "year_anime",
-                    "type": "INTEGER",
-                    "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_created"
+                      "foreignKeyName": "fk_studio_id",
+                      "references": "studio(id)"
                     }
                   }
                 }
@@ -241,7 +194,7 @@
     },
     {
       "changeSet": {
-        "id": "6",
+        "id": "5 Review Table",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -252,6 +205,7 @@
                   "column": {
                     "name": "id_review",
                     "type": "INTEGER",
+                    "autoIncrement": true,
                     "constraints": {
                       "nullable": false,
                       "primaryKey": true,
@@ -270,31 +224,16 @@
                     "name": "login_user",
                     "type": "VARCHAR(100)",
                     "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_review"
+                      "nullable": false
                     }
                   }
                 },
                 {
                   "column": {
-                    "name": "title_anime",
-                    "type": "VARCHAR(50)",
-                    "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_review"
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "year_anime",
+                    "name": "anime_id",
                     "type": "INTEGER",
                     "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_review"
+                      "nullable": false
                     }
                   }
                 }
@@ -306,7 +245,7 @@
     },
     {
       "changeSet": {
-        "id": "7",
+        "id": "6 Comment Table",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -316,30 +255,23 @@
                 {
                   "column": {
                     "name": "id",
-                    "type": "BIGINT",
-                    "autoIncrement": true
+                    "type": "INTEGER",
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true
+                    }
                   }
                 },
                 {
                   "column": {
                     "name": "user_Login",
-                    "type": "VARCHAR(100)",
-                    "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_comment"
-                    }
+                    "type": "VARCHAR(100)"
                   }
                 },
                 {
                   "column": {
                     "name": "published_date",
-                    "type": "DATE",
-                    "constraints": {
-                      "nullable": false,
-                      "primaryKey": true,
-                      "primaryKeyName": "pk_comment"
-                    }
+                    "type": "DATE"
                   }
                 },
                 {
@@ -353,34 +285,7 @@
                 },
                 {
                   "column": {
-                    "name": "login_user_review",
-                    "type": "VARCHAR(100)",
-                    "constraints": {
-                      "nullable": false
-                    }
-                  }
-                },
-                {
-                  "column": {
                     "name": "id_review",
-                    "type": "BIGINT",
-                    "constraints": {
-                      "nullable": false
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "title_anime",
-                    "type": "VARCHAR(50)",
-                    "constraints": {
-                      "nullable": false
-                    }
-                  }
-                },
-                {
-                  "column": {
-                    "name": "year_anime",
                     "type": "INTEGER",
                     "constraints": {
                       "nullable": false
@@ -395,48 +300,15 @@
     },
     {
       "changeSet": {
-        "id": "8",
-        "author": "Maciej Matusz",
-        "changes": [
-          {
-            "addForeignKeyConstraint": {
-              "baseTableName": "created",
-              "baseColumnNames": "name_studio, year_studio",
-              "referencedTableName": "studio",
-              "referencedColumnNames": "name, year",
-              "constraintName": "fk_created_studio"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "changeSet": {
-        "id": "9",
-        "author": "Maciej Matusz",
-        "changes": [
-          {
-            "addForeignKeyConstraint": {
-              "baseTableName": "created",
-              "baseColumnNames": "title_anime, year_anime",
-              "referencedTableName": "anime",
-              "referencedColumnNames": "title, year",
-              "constraintName": "fk_created_anime"
-            }
-          }
-        ]
-      }
-    },{
-      "changeSet": {
-        "id": "10",
+        "id": "7 Foreign Key for review table part 1",
         "author": "Maciej Matusz",
         "changes": [
           {
             "addForeignKeyConstraint": {
               "baseTableName": "review",
-              "baseColumnNames": "title_anime, year_anime",
+              "baseColumnNames": "anime_id",
               "referencedTableName": "anime",
-              "referencedColumnNames": "title, year",
+              "referencedColumnNames": "id",
               "constraintName": "fk_review_anime"
             }
           }
@@ -444,7 +316,7 @@
       }
     },{
       "changeSet": {
-        "id": "11",
+        "id": "8 Foreign key for review table part 2",
         "author": "Maciej Matusz",
         "changes": [
           {
@@ -460,16 +332,33 @@
       }
     },{
       "changeSet": {
-        "id": "12",
+        "id": "9 Foreign key for comment table review id",
         "author": "Maciej Matusz",
         "changes": [
           {
             "addForeignKeyConstraint": {
               "baseTableName": "comment",
-              "baseColumnNames": "login_user_review,id_review,title_anime,year_anime",
+              "baseColumnNames": "id_review,",
               "referencedTableName": "review",
-              "referencedColumnNames": "login_user,id_review,title_anime,year_anime",
+              "referencedColumnNames": "id_review",
               "constraintName": "fk_comment_review"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "10 Foreign key for comment user login",
+        "author": "Maciej Matusz",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseTableName": "comment",
+              "baseColumnNames": "user_Login,",
+              "referencedTableName": "user",
+              "referencedColumnNames": "login",
+              "constraintName": "fk_comment_user"
             }
           }
         ]

@@ -1,30 +1,31 @@
 package com.anime.animeweb.model.entity;
 
 
-import com.anime.animeweb.model.entity.key.StudioKey;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "studio")
 @NoArgsConstructor
-@EqualsAndHashCode
-@IdClass(StudioKey.class)
+@AllArgsConstructor
 public class Studio {
 
-    @Id
-    private String name;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
     private Integer year;
 
     private String studio;
+
+    @OneToMany(mappedBy = "studio")
+    List<Anime> animeList;
+
 }
