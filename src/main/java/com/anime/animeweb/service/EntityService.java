@@ -1,6 +1,6 @@
-package com.anime.animeweb.services;
+package com.anime.animeweb.service;
 
-import com.anime.animeweb.repositories.EntityRepository;
+import com.anime.animeweb.repository.EntityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 

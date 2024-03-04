@@ -1,4 +1,4 @@
-package com.anime.animeweb.repositories;
+package com.anime.animeweb.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
