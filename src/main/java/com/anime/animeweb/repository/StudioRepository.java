@@ -1,7 +1,6 @@
-package com.anime.animeweb.repositories;
+package com.anime.animeweb.repository;
 
 import com.anime.animeweb.model.entity.Studio;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

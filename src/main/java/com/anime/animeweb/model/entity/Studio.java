@@ -9,9 +9,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "studio")
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "studio")
 public class Studio {
 
 
@@ -23,7 +23,7 @@ public class Studio {
 
     private Integer year;
 
-    private String studio;
+    private String country;
 
     @OneToMany(mappedBy = "studio")
     List<Anime> animeList;
