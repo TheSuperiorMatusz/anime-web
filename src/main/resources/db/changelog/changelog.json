@@ -21,7 +21,7 @@
                 },
                 {
                   "column": {
-                    "name": "name",
+                    "name": "role_name",
                     "type": "VARCHAR(255)"
                   }
                 }
@@ -281,7 +281,7 @@
                 {
                   "column": {
                     "name": "published_date",
-                    "type": "DATE"
+                    "type": "TIMESTAMP(6)"
                   }
                 },
                 {
