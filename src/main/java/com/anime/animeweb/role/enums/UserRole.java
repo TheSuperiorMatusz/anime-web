@@ -1,4 +1,4 @@
-package com.anime.animeweb.model.entity.enums;
+package com.anime.animeweb.role.enums;
 
 public enum UserRole {
     ADMIN,USER;

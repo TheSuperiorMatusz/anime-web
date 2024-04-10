@@ -1,6 +1,7 @@
-package com.anime.animeweb.repositories;
+package com.anime.animeweb.role;
 
-import com.anime.animeweb.model.entity.Role;
+import com.anime.animeweb.core.EntityRepository;
+import com.anime.animeweb.role.Role;
 import org.springframework.stereotype.Repository;
 
 @Repository

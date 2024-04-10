@@ -1,5 +1,7 @@
-package com.anime.animeweb.model.entity;
+package com.anime.animeweb.user;
 
+import com.anime.animeweb.comment.Comment;
+import com.anime.animeweb.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,11 +9,9 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

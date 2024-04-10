@@ -1,5 +1,7 @@
-package com.anime.animeweb.model.entity;
+package com.anime.animeweb.comment;
 
+import com.anime.animeweb.review.Review;
+import com.anime.animeweb.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +13,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "comment")
 public class Comment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -27,7 +29,7 @@ public class Comment {
     private Review review;
 
     @ManyToOne
-    @JoinColumn(name = "user_Login")
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

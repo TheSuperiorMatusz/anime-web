@@ -1,6 +1,7 @@
-package com.anime.animeweb.model.entity;
+package com.anime.animeweb.studio;
 
 
+import com.anime.animeweb.anime.Anime;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,9 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "studio")
 @NoArgsConstructor
-@AllArgsConstructor
 public class Studio {
 
 
@@ -23,7 +22,7 @@ public class Studio {
 
     private Integer year;
 
-    private String studio;
+    private String country;
 
     @OneToMany(mappedBy = "studio")
     List<Anime> animeList;

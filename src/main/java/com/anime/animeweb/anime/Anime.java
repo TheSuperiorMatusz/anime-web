@@ -1,5 +1,7 @@
-package com.anime.animeweb.model.entity;
+package com.anime.animeweb.anime;
 
+import com.anime.animeweb.review.Review;
+import com.anime.animeweb.studio.Studio;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "anime")
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,7 @@
-package com.anime.animeweb.model.entity;
+package com.anime.animeweb.review;
 
+import com.anime.animeweb.anime.Anime;
+import com.anime.animeweb.comment.Comment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,11 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "review")
 public class Review {
 
     @Id
     @Column(name = "id_review")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReview;
 
     private String contest;

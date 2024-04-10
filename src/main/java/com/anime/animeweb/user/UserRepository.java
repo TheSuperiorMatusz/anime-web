@@ -1,6 +1,6 @@
-package com.anime.animeweb.repositories;
+package com.anime.animeweb.user;
 
-import com.anime.animeweb.model.entity.User;
+import com.anime.animeweb.core.EntityRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
