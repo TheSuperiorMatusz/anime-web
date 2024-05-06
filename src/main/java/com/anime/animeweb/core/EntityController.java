@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @AllArgsConstructor
-
 public abstract class EntityController<T> {
     private final EntityService<T> service;
 
