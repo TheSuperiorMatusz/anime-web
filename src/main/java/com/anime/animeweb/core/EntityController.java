@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class EntityController<T> {
     private final EntityService<T> service;
 
-    @GetMapping("")
+    @GetMapping
     public List<T> getEntities() {
         return service.findAllEntities();
     }
@@ -21,7 +21,7 @@ public abstract class EntityController<T> {
         return service.findById(id);
     }
 
-    @PostMapping("")
+    @PostMapping
     public T createNewEntity(@RequestBody T entity) {
         return service.addEntityToDatabase(entity);
     }
