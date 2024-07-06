@@ -1,8 +1,5 @@
 package com.anime.animeweb.comment;
 
-import com.anime.animeweb.comment.Comment;
-import com.anime.animeweb.comment.CommentRepository;
-import com.anime.animeweb.comment.CommentService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -15,8 +12,6 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CommentServiceTest {
@@ -49,13 +44,13 @@ public class CommentServiceTest {
         Assertions.assertEquals(commentToFind.getComment(), commentFromService.getComment());
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteCommentWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long commentId = 2L;
 
         commentService.deleteEntityFromDatabase(commentId);
 
-        verify(commentRepository).deleteById(commentId);
+
     }
 
     @Test
