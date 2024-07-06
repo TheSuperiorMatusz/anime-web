@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/studio")
+@RequestMapping("/api/v1/studios")
 public class StudioController extends EntityController<Studio> {
     public StudioController(EntityService<Studio> service) {
         super(service);

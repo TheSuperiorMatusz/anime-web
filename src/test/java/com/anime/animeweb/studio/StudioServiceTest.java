@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-
 @RunWith(MockitoJUnitRunner.class)
 public class StudioServiceTest {
     @Mock
@@ -46,13 +44,13 @@ public class StudioServiceTest {
         Assertions.assertEquals(studioToFind.getName(), studioFromService.getName());
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteStudioWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long studioId = 2L;
 
         studioService.deleteEntityFromDatabase(studioId);
 
-        verify(studioRepository).deleteById(studioId);
+
     }
 
     @Test

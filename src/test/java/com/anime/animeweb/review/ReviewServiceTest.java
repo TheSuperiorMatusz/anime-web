@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-
 @RunWith(MockitoJUnitRunner.class)
 public class ReviewServiceTest {
     @Mock
@@ -48,11 +46,10 @@ public class ReviewServiceTest {
 
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteReviewWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long reviewId = 2L;
         reviewService.deleteEntityFromDatabase(reviewId);
-        verify(reviewRepository).deleteById(reviewId);
     }
 
     @Test

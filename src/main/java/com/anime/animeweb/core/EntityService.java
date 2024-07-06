@@ -1,13 +1,13 @@
 package com.anime.animeweb.core;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public abstract class EntityService<E> {
     private final EntityRepository<E> repository;
 

@@ -3,6 +3,7 @@ package com.anime.animeweb.anime;
 import com.anime.animeweb.review.Review;
 import com.anime.animeweb.studio.Studio;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
