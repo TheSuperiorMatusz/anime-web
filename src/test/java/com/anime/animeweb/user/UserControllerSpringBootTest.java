@@ -7,8 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class UserControllerSpringBootTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private static String USER_URL = "/api/v1/users";
+    private final static String USER_URL = "/api/v1/users";
 
     @Test
     public void canRetrieveUsers() {
@@ -64,7 +63,6 @@ public class UserControllerSpringBootTest {
         User user = new User();
         user.setName("Tst");
         user.setAge(25);
-
         given(userService.addEntityToDatabase(user)).willReturn(user);
 
         ResponseEntity<User> userResponseEntity = restTemplate.postForEntity(USER_URL, user, User.class);
@@ -73,4 +71,21 @@ public class UserControllerSpringBootTest {
         assertThat(userResponseEntity.getBody()).isEqualTo(user);
     }
 
+
+    @Test
+    public void canDeleteUser() throws ChangeSetPersister.NotFoundException {
+        Long userId = 1L;
+        User user = new User();
+        user.setId(userId);
+        user.setAge(25);
+        user.setName("Test");
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
+        given(userService.findById(userId)).willReturn(user);
+
+        ResponseEntity<Void> userDeleteResponseEntity = restTemplate.exchange(USER_URL + "/" + userId, HttpMethod.DELETE, requestEntity, Void.class);
+
+
+        assertThat(userDeleteResponseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
 }

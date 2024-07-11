@@ -37,6 +37,7 @@ public class AnimeControllerMockMvcWithContextTest {
     @Autowired
     private JacksonTester<List<Anime>> jsonAnimeList;
 
+    private final static String ANIME_URL = "/api/v1/animes";
 
     @Test
     public void canRetrieveAllAnime() throws Exception {
@@ -46,7 +47,7 @@ public class AnimeControllerMockMvcWithContextTest {
         List<Anime> animeList = List.of(anime);
         when(animeService.findAllEntities()).thenReturn(animeList);
 
-        MockHttpServletResponse response = mvc.perform(get("/api/v1/animes")
+        MockHttpServletResponse response = mvc.perform(get(ANIME_URL)
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -62,7 +63,7 @@ public class AnimeControllerMockMvcWithContextTest {
 
         when(animeService.findById(anime.getId())).thenReturn(anime);
 
-        MockHttpServletResponse response = mvc.perform(get("/api/v1/animes/" + anime.getId())
+        MockHttpServletResponse response = mvc.perform(get(ANIME_URL+"/" + anime.getId())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -78,7 +79,7 @@ public class AnimeControllerMockMvcWithContextTest {
 
         when(animeService.findById(anime.getId())).thenReturn(anime);
 
-        MockHttpServletResponse response = mvc.perform(delete("/api/v1/anime/" + anime.getId())
+        MockHttpServletResponse response = mvc.perform(delete(ANIME_URL+"/" + anime.getId())
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
@@ -95,7 +96,7 @@ public class AnimeControllerMockMvcWithContextTest {
         when(animeService.addEntityToDatabase(anime)).thenReturn(anime);
 
 
-        MockHttpServletResponse response = mvc.perform(post("/api/v1/animes").contentType(MediaType.APPLICATION_JSON).content(
+        MockHttpServletResponse response = mvc.perform(post(ANIME_URL).contentType(MediaType.APPLICATION_JSON).content(
                 jsonAnime.write(anime).getJson()
         )).andReturn().getResponse();
 
