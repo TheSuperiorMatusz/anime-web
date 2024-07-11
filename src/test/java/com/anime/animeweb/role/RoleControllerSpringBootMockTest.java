@@ -36,7 +36,7 @@ public class RoleControllerSpringBootMockTest {
     @Autowired
     private JacksonTester<List<Role>> roleListJacksonTester;
 
-    private static String ROLE_URL = "/api/v1/roles";
+    private final static String ROLE_URL = "/api/v1/roles";
 
     @Test
     public void canRetrieveAllRoles() throws Exception {
@@ -94,5 +94,9 @@ public class RoleControllerSpringBootMockTest {
         MockHttpServletResponse response = mockMvc.perform(delete(ROLE_URL + "/" + roleId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
+
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+
     }
 }

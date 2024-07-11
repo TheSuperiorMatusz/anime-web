@@ -37,7 +37,7 @@ public class ReviewControllerMockWithContextTest {
     @Autowired
     private JacksonTester<List<Review>> listJacksonTester;
 
-    private static String URL_REVIEWS = "/api/v1/reviews";
+    private final static String URL_REVIEWS = "/api/v1/reviews";
 
     @Test
     public void canRetrieveAllReviews() throws Exception {
