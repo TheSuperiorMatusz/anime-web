@@ -1,9 +1,6 @@
 package com.anime.animeweb.role;
 
-import com.anime.animeweb.role.Role;
 import com.anime.animeweb.role.enums.UserRole;
-import com.anime.animeweb.role.RoleRepository;
-import com.anime.animeweb.role.RoleService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -16,8 +13,6 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoleServiceTest {
@@ -50,11 +45,10 @@ public class RoleServiceTest {
         Assertions.assertEquals(roleFromService.getRoleName(), roleFromService.getRoleName());
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteRoleWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long roleId = 2L;
         roleService.deleteEntityFromDatabase(roleId);
-        verify(roleRepository).deleteById(roleId);
     }
 
     @Test

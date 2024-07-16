@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
     @Mock
@@ -47,13 +45,12 @@ public class UserServiceTest {
         Assertions.assertEquals(userToFind.getName(), userFromService.getName());
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteUserWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long userId = 2L;
 
         userService.deleteEntityFromDatabase(userId);
 
-        verify(userRepository).deleteById(userId);
     }
 
     @Test

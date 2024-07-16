@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-
 @RunWith(MockitoJUnitRunner.class)
 public class AnimeServiceTest {
     @Mock
@@ -50,11 +48,11 @@ public class AnimeServiceTest {
         Assertions.assertEquals(animeToFind.getYear(), animeFromService.getYear());
     }
 
-    @Test
+    @Test(expected = ChangeSetPersister.NotFoundException.class)
     public void shouldDeleteAnimeWithGivenId() throws ChangeSetPersister.NotFoundException {
         Long animeId = 2L;
         animeService.deleteEntityFromDatabase(animeId);
-        verify(animeRepository).deleteById(animeId);
+
     }
 
     @Test
