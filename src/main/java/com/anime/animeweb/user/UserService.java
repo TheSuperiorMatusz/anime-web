@@ -3,8 +3,6 @@ package com.anime.animeweb.user;
 import com.anime.animeweb.core.EntityRepository;
 import com.anime.animeweb.core.EntityService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.NotFound;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,7 +31,6 @@ public class UserService extends EntityService<User> implements UserDetailsServi
     public User addEntityToDatabase(User entity) {
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         return super.addEntityToDatabase(entity);
-        log.info("user added succesfully")
     }
 
 
