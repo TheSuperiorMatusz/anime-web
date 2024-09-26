@@ -32,6 +32,4 @@ public class UserService extends EntityService<User> implements UserDetailsServi
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         return super.addEntityToDatabase(entity);
     }
-
-
 }

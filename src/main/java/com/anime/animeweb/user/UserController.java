@@ -17,7 +17,6 @@ public class UserController {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public User registerUser(@RequestBody User user) {
@@ -34,5 +33,4 @@ public class UserController {
         }
         return token;
     }
-
 }
