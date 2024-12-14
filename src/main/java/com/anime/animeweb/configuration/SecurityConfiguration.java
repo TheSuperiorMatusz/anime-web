@@ -50,8 +50,9 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public CorsConfigurationSource corsConfigProperties() {
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+
 
         configuration.setAllowCredentials(corsConfigProperties.getAllowCredentials());
         configuration.setAllowedMethods(corsConfigProperties.getAllowedMethods());
