@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +25,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwtToken = extractJwtToken(request);
         authenticateUser(request, jwtToken);
         filterChain.doFilter(request, response);
@@ -38,8 +39,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         return null;
     }
 
-    private boolean isUserNotAuthenticated() {
-        return SecurityContextHolder.getContext().getAuthentication() == null;
+    private boolean isUserAuthenticated() {
+        return SecurityContextHolder.getContext().getAuthentication() != null;
     }
 
     private void authenticateUser(HttpServletRequest request, String jwtToken) {
@@ -48,7 +49,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         String username = jwtService.extractUsername(jwtToken);
-        if (username == null && !isUserNotAuthenticated()) {
+        if (username == null && isUserAuthenticated()) {
             return;
         }
 
