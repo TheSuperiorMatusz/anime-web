@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public abstract class EntityService<E> {
-    private final EntityRepository<E> repository;
+    protected final EntityRepository<E> repository;
 
     @Transactional
     public E addEntityToDatabase(E entity) {
